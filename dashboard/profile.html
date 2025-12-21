@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Profile - Expense Manager</title>
+<style>
+/* ======================================================
+   ⚠️ INTERNAL CSS – NO EXTERNAL FILE
+   PREMIUM FINTECH UI – MOBILE FIRST
+====================================================== */
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== BODY BACKGROUND ===== */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  color: #1e293b;
+}
+
+/* ===== FLOATING BACKGROUND SHAPES ===== */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  filter: blur(10px);
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+}
+
+body::before {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: -140px;
+}
+
+body::after {
+  width: 320px;
+  height: 320px;
+  bottom: -120px;
+  right: -120px;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(30px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  width: 380px;
+  max-width: 95%;
+  padding: 42px 34px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0, 80, 200, 0.3);
+  animation: rise 0.9s ease forwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(45px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== TITLES ===== */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 26px;
+  color: #0f172a;
+  letter-spacing: 0.5px;
+}
+
+/* ===== INPUTS ===== */
+input,
+select {
+  width: 100%;
+  padding: 15px 16px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: 1px solid #c7ddff;
+  font-size: 15px;
+  transition: all 0.35s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #38bdf8;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.35);
+  transform: scale(1.02);
+}
+
+/* ===== BUTTON ===== */
+button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  transition: all 0.35s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(37,99,235,0.45);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  width: 100%;
+  max-width: 430px;
+  padding: 100px 16px 100px;
+}
+
+/* ===== GLASS CARDS ===== */
+.card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  animation: fadeCard 0.6s ease;
+}
+
+@keyframes fadeCard {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card h3 {
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* ===== LIST ITEMS ===== */
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e0f2ff, #f0f9ff);
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* ===== PROFILE ===== */
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
+  margin: auto;
+  box-shadow: 0 15px 30px rgba(37,99,235,0.45);
+}
+
+/* ===============================
+   RESPONSIVE NAVBAR (INTERNAL)
+================================ */
+
+/* COMMON NAVBAR STYLE */
+.navbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 72px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -12px 30px rgba(0,0,0,0.25);
+  border-radius: 26px 26px 0 0;
+  z-index: 1000;
+  animation: navSlideUp 0.8s ease;
+}
+
+@keyframes navSlideUp {
+  from { transform: translate(-50%, 80px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+.navbar a { text-decoration:none; font-size:13px; color:#64748b; display:flex; flex-direction:column; align-items:center; gap:4px; transition:all .3s ease; }
+.navbar a span { font-size:20px; }
+.navbar a.active { color:#2563eb; font-weight:700; transform:translateY(-6px); }
+.navbar a.active::after { content:""; width:6px; height:6px; background:#2563eb; border-radius:50%; margin-top:2px; }
+@media (max-width:768px){ .navbar{ bottom:12px; top:auto } }
+@media (min-width:769px){ .navbar{ top:16px; bottom:auto; max-width:800px; height:64px; border-radius:20px; box-shadow:0 12px 30px rgba(0,0,0,.15);} .navbar a{flex-direction:row; gap:8px; font-size:14px;} .navbar a span{font-size:18px;} .navbar a.active{transform:none;} .navbar a.active::after{display:none;} }
+
+/* ensure content doesn't hide under navbar */
+.dashboard { padding-bottom: 120px; padding-top: 100px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 420px) {
+  .container {
+    width: 92%;
+    padding: 36px 26px;
+  }
+}
+</style>
+</head>
+<body class="fade-in">
+
+<div class="navbar">
+  <a data-page="home" href="home.html">
+    <span>🏠</span>Home
+  </a>
+  <a data-page="history" href="history.html">
+    <span>📜</span>History
+  </a>
+  <a data-page="analysis" href="analysis.html">
+    <span>📊</span>Analysis
+  </a>
+  <a data-page="profile" href="profile.html">
+    <span>👤</span>Profile
+  </a>
+</div>
+
+<section class="page-content">
+  
+  <!-- SMS Tracking Card -->
+  <div class="card">
+    <h3 style="margin-bottom: 8px;">📱 SMS Tracking</h3>
+    <p class="muted" style="margin-bottom: 16px;">
+      Allow SMS access to automatically track bank & UPI transactions.
+      <strong>Your SMS never leaves your device.</strong>
+    </p>
+
+    <button id="requestSmsBtn" class="btn" style="margin-bottom: 12px;">
+      Enable SMS Tracking
+    </button>
+
+    <label class="toggle">
+      <input type="checkbox" id="smsToggle">
+      <span class="slider"></span>
+      <span style="margin-left: 8px;">SMS Tracking Enabled</span>
+    </label>
+  </div>
+
+  <!-- Profile Card -->
+  <div class="card">
+    <div style="text-align: center; margin-bottom: 24px;">
+      <div style="width: 80px; height: 80px; background: var(--primary-gradient); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; font-size: 32px; color: white; font-weight: bold;" id="profileAvatar">U</div>
+      <h2 style="margin: 0;" id="displayName">Loading...</h2>
+      <p style="color: var(--text-dim); margin: 4px 0;" id="displayEmail">loading@example.com</p>
+    </div>
+
+    <div class="input-group">
+      <div class="summary-label" style="margin-top: 16px;">Full Name</div>
+      <input type="text" id="profileName" placeholder="Full Name"/>
+      
+      <div class="summary-label" style="margin-top: 16px;">Role</div>
+      <select id="profileRole">
+        <option>Student</option>
+        <option>Employee</option>
+        <option>Business Owner</option>
+        <option>Freelancer</option>
+      </select>
+      
+      <div class="summary-label" style="margin-top: 16px;">Monthly Income (₹)</div>
+      <input type="number" id="profileIncome" placeholder="e.g. 50000"/>
+      
+      <div class="summary-label" style="margin-top: 16px;">Currency Symbol</div>
+      <input type="text" id="profileCurrency" placeholder="₹"/>
+      
+      <div class="summary-label" style="margin-top: 16px;">Member Since</div>
+      <input type="text" id="profileJoined" readonly style="opacity: 0.6; cursor: not-allowed;"/>
+      
+      <div style="margin-top: 20px; display: flex; align-items: center; gap: 10px;">
+        <input type="checkbox" id="profileSmsToggle" style="width: auto; margin-top: 0;"/>
+        <label for="profileSmsToggle" style="font-size: 14px; color: var(--text-dim);">Enable Automatic SMS Tracking</label>
+      </div>
+    </div>
+
+    <button id="updateProfileBtn" class="button-press">Save Profile Settings</button>
+  </div>
+</section>
+
+<!-- Centralized App Logic -->
+<script type="module" src="../js/app.js"></script>
+<script type="module" src="../js/sms-permission.js"></script>
+<script src="../js/navbar-gesture.js"></script>
+
+<script type="module">
+import { auth, db } from "../js/firebase.js";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+
+// Custom profile logic (onAuthStateChanged handled by app.js guard, but we still need the data fetching)
+onAuthStateChanged(auth, async (user) => {
+  if (!user) return; // app.js handles redirect
+  
+  const uid = user.uid;
+  const docRef = doc(db, "users", uid);
+  const snapshot = await getDoc(docRef);
+  
+  if (snapshot.exists()) {
+    const data = snapshot.data();
+    document.getElementById("profileName").value = data.name || "";
+    document.getElementById("displayName").textContent = data.name || "User";
+    document.getElementById("displayEmail").textContent = data.email || user.email;
+    document.getElementById("profileRole").value = data.role || "Student";
+    document.getElementById("profileIncome").value = data.monthlyIncome || "";
+    document.getElementById("profileCurrency").value = data.currency || "₹";
+    document.getElementById("profileJoined").value = data.createdAt ? new Date(data.createdAt).toLocaleDateString('en-IN', {day:'2-digit', month:'long', year:'numeric'}) : "Unknown";
+    document.getElementById("profileSmsToggle").checked = data.smsEnabled || false;
+    document.getElementById("profileAvatar").textContent = (data.name || "U")[0].toUpperCase();
+  }
+
+  document.getElementById("updateProfileBtn").addEventListener("click", async () => {
+    const btn = document.getElementById("updateProfileBtn");
+    btn.disabled = true;
+    btn.textContent = "Updating...";
+    
+    try {
+      await setDoc(docRef, {
+        name: document.getElementById("profileName").value,
+        email: user.email,
+        role: document.getElementById("profileRole").value,
+        monthlyIncome: Number(document.getElementById("profileIncome").value),
+        currency: document.getElementById("profileCurrency").value,
+        smsEnabled: document.getElementById("profileSmsToggle").checked
+      }, { merge: true });
+      
+      btn.textContent = "Profile Updated! ✓";
+      btn.style.background = "#10b981";
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = "Save Profile Settings";
+        btn.style.background = "";
+      }, 2000);
+      
+      // Update UI displays
+      document.getElementById("displayName").textContent = document.getElementById("profileName").value;
+      document.getElementById("profileAvatar").textContent = (document.getElementById("profileName").value || "U")[0].toUpperCase();
+
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      alert("Failed to update profile.");
+      btn.disabled = false;
+      btn.textContent = "Save Profile Settings";
+    }
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login • Expense Manager</title>
+ 
+<style>
+/* ======================================================
+   ⚠️ INTERNAL CSS – NO EXTERNAL FILE
+   PREMIUM FINTECH UI – MOBILE FIRST
+====================================================== */
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== BODY BACKGROUND ===== */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  color: #1e293b;
+}
+
+/* ===== FLOATING BACKGROUND SHAPES ===== */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  filter: blur(10px);
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+}
+
+body::before {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: -140px;
+}
+
+body::after {
+  width: 320px;
+  height: 320px;
+  bottom: -120px;
+  right: -120px;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(30px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  width: 380px;
+  max-width: 95%;
+  padding: 42px 34px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0, 80, 200, 0.3);
+  animation: rise 0.9s ease forwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(45px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== TITLES ===== */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 26px;
+  color: #0f172a;
+  letter-spacing: 0.5px;
+}
+
+/* ===== INPUTS ===== */
+input,
+select {
+  width: 100%;
+  padding: 15px 16px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: 1px solid #c7ddff;
+  font-size: 15px;
+  transition: all 0.35s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #38bdf8;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.35);
+  transform: scale(1.02);
+}
+
+/* ===== BUTTON ===== */
+button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  transition: all 0.35s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(37,99,235,0.45);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  width: 100%;
+  max-width: 430px;
+  padding: 100px 16px 100px;
+}
+
+/* ===== GLASS CARDS ===== */
+.card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  animation: fadeCard 0.6s ease;
+}
+
+@keyframes fadeCard {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card h3 {
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* ===== LIST ITEMS ===== */
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e0f2ff, #f0f9ff);
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* ===== PROFILE ===== */
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
+  margin: auto;
+  box-shadow: 0 15px 30px rgba(37,99,235,0.45);
+}
+
+/* ===== BOTTOM NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  width: 100%;
+  max-width: 100%;
+  height: 64px;
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  z-index: 1000;
+}
+
+.navbar a {
+  font-size: 13px;
+  color: #64748b;
+  transition: all 0.3s ease;
+  margin: 0 10px;
+}
+
+.navbar a.active {
+  color: #2563eb;
+  font-weight: bold;
+  transform: translateY(-2px);
+}
+
+/* ensure body content is visible below fixed navbar */
+body { padding-top: 84px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 420px) {
+  .container {
+    width: 92%;
+    padding: 36px 26px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container" style="max-width:420px;margin:48px auto;">
+  <h2>Login</h2>
+  <input type="email" placeholder="Email" id="email">
+  <input type="password" placeholder="Password" id="password">
+  <button onclick="login()">Login</button>
+  <p class="link-text">New user? <a href="signup.html">Signup</a></p>
+</div>
+</div>
+
+<script src="../js/local-login.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.profile-info {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.profile-info h3 {
+  margin: 8px 0;
+}

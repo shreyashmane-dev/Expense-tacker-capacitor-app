@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Manager</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <p>Redirecting...</p>
+
+  <script type="module">
+    import { auth } from "/js/firebase.js";
+    import { onAuthStateChanged } from "firebase/auth";
+
+    onAuthStateChanged(auth, user => {
+      if (user) location.replace("/dashboard/home.html");
+      else location.replace("/auth/login.html");
+    });
+  </script>
+</body>
+</html>

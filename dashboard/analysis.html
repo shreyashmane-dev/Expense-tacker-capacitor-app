@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Analysis - Expense Manager</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif}
+    body{min-height:100vh;background:linear-gradient(135deg,#4facfe,#00f2fe);color:#0f172a;padding-top:84px}
+    .navbar{position:fixed;top:0;left:0;right:0;height:64px;background:rgba(255,255,255,0.98);display:flex;justify-content:center;align-items:center;gap:18px;z-index:1000}
+    .navbar a{color:#64748b;text-decoration:none;font-weight:600}
+    .navbar a.active{color:#2563eb}
+    .dashboard{width:100%;max-width:430px;margin:0 auto;padding:48px 16px}
+    .card{background:rgba(255,255,255,0.96);border-radius:14px;padding:18px;margin-bottom:16px;box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+    h2,h3{text-align:center;color:#0f172a;margin-bottom:12px}
+    canvas{width:100%!important;height:220px!important}
+    #insights p{margin:8px 0}
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="home.html">🏠 Home</a>
+    <a href="history.html">📜 History</a>
+    <a class="active" href="analysis.html">📊 Analysis</a>
+    <a href="profile.html">👤 Profile</a>
+  </nav>
+
+  <main class="dashboard">
+    <h2>Spending Analysis</h2>
+
+    <div class="card">
+      <h3>Income vs Expense</h3>
+      <canvas id="incomeExpenseChart"></canvas>
+    </div>
+
+    <div class="card">
+      <h3>Category-wise Expense</h3>
+      <canvas id="categoryChart"></canvas>
+    </div>
+
+    <div class="card" id="insights"></div>
+  </main>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- App scripts -->
+  <script type="module" src="../js/analysis.js"></script>
+  <script type="module" src="../js/app.js"></script>
+  <script src="../js/navbar-gesture.js"></script>
+
+</body>
+</html>
+  body {

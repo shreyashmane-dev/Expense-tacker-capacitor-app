@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History</title>
+<style>
+/* ======================================================
+   ⚠️ INTERNAL CSS – NO EXTERNAL FILE
+   PREMIUM FINTECH UI – MOBILE FIRST
+====================================================== */
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== BODY BACKGROUND ===== */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  color: #1e293b;
+}
+
+/* ===== FLOATING BACKGROUND SHAPES ===== */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  filter: blur(10px);
+  z-index: -1;
+  animation: float 8s ease-in-out infinite;
+}
+
+body::before {
+  width: 420px;
+  height: 420px;
+  top: -140px;
+  left: -140px;
+}
+
+body::after {
+  width: 320px;
+  height: 320px;
+  bottom: -120px;
+  right: -120px;
+  animation-delay: 3s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(30px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  width: 380px;
+  max-width: 95%;
+  padding: 42px 34px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0, 80, 200, 0.3);
+  animation: rise 0.9s ease forwards;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(45px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ===== TITLES ===== */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 26px;
+  color: #0f172a;
+  letter-spacing: 0.5px;
+}
+
+/* ===== INPUTS ===== */
+input,
+select {
+  width: 100%;
+  padding: 15px 16px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: 1px solid #c7ddff;
+  font-size: 15px;
+  transition: all 0.35s ease;
+}
+
+input:focus,
+select:focus {
+  border-color: #38bdf8;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(56,189,248,0.35);
+  transform: scale(1.02);
+}
+
+/* ===== BUTTON ===== */
+button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 0.6px;
+  transition: all 0.35s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(37,99,235,0.45);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* ===== LINKS ===== */
+a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-text {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard {
+  width: 100%;
+  max-width: 430px;
+  padding: 100px 16px 100px;
+}
+
+/* ===== GLASS CARDS ===== */
+.card {
+  background: rgba(255,255,255,0.97);
+  border-radius: 18px;
+  padding: 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  animation: fadeCard 0.6s ease;
+}
+
+@keyframes fadeCard {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card h3 {
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+/* ===== LIST ITEMS ===== */
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #e0f2ff, #f0f9ff);
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* ===== PROFILE ===== */
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38bdf8, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 34px;
+  font-weight: bold;
+  margin: auto;
+  box-shadow: 0 15px 30px rgba(37,99,235,0.45);
+}
+
+/* ===============================
+   RESPONSIVE NAVBAR (INTERNAL)
+================================ */
+
+/* COMMON NAVBAR STYLE */
+.navbar {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  height: 72px;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -12px 30px rgba(0,0,0,0.25);
+  border-radius: 26px 26px 0 0;
+  z-index: 1000;
+  animation: navSlideUp 0.8s ease;
+}
+
+/* NAVBAR ENTRY ANIMATION */
+@keyframes navSlideUp {
+  from { transform: translate(-50%, 80px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+
+/* NAV ITEMS */
+.navbar a {
+  text-decoration: none;
+  font-size: 13px;
+  color: #64748b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* ICON STYLE (if you use emojis or icons) */
+.navbar a span {
+  font-size: 20px;
+}
+
+/* ACTIVE TAB EFFECT */
+.navbar a.active {
+  color: #2563eb;
+  font-weight: bold;
+  transform: translateY(-6px);
+}
+
+/* ACTIVE DOT INDICATOR */
+.navbar a.active::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #2563eb;
+  border-radius: 50%;
+  margin-top: 2px;
+}
+
+/* HOVER EFFECT (DESKTOP) */
+.navbar a:hover {
+  color: #2563eb;
+  transform: translateY(-4px);
+}
+
+/* ===============================
+   MOBILE VIEW (BOTTOM NAV)
+================================ */
+@media (max-width: 768px) {
+  .navbar {
+    bottom: 12px;
+    top: auto;
+  }
+}
+
+/* ===============================
+   DESKTOP VIEW (TOP NAV)
+================================ */
+@media (min-width: 769px) {
+  .navbar {
+    top: 16px;
+    bottom: auto;
+    max-width: 800px;
+    height: 64px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  }
+
+  .navbar a {
+    flex-direction: row;
+    gap: 8px;
+    font-size: 14px;
+  }
+
+  .navbar a span {
+    font-size: 18px;
+  }
+
+  .navbar a.active {
+    transform: none;
+  }
+
+  .navbar a.active::after {
+    display: none;
+  }
+}
+
+/* ensure content doesn't hide under navbar */
+.dashboard { padding-bottom: 120px; padding-top: 100px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 420px) {
+  .container {
+    width: 92%;
+    padding: 36px 26px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <a data-page="home" href="home.html">
+      <span>🏠</span>Home
+    </a>
+    <a data-page="history" href="history.html" class="active">
+      <span>📜</span>History
+    </a>
+    <a data-page="analysis" href="analysis.html">
+      <span>📊</span>Analysis
+    </a>
+    <a data-page="profile" href="profile.html">
+      <span>👤</span>Profile
+    </a>
+  </div>
+
+  <div class="dashboard">
+    <h2>History</h2>
+    <div style="display:flex; gap:12px; align-items:center; justify-content:space-between; margin-bottom:12px;">
+      <div style="display:flex; gap:8px; align-items:center;">
+        <label style="color:#64748b; font-weight:600;">Filter:</label>
+        <select id="filterSource" style="padding:8px 10px; border-radius:10px; border:1px solid #e6eefc;">
+          <option value="all">All</option>
+          <option value="cash">Cash</option>
+          <option value="phonepe">PhonePe</option>
+          <option value="gpay">Google Pay</option>
+          <option value="paytm">Paytm</option>
+          <option value="bank">Bank</option>
+          <option value="card">Card</option>
+        </select>
+      </div>
+      <div style="color:#94a3b8; font-size:13px;">Showing recent transactions — use filter to narrow</div>
+    </div>
+    <div id="historyList"></div>
+  </div>
+
+<script type="module" src="../js/history.js"></script>
+<script type="module" src="../js/app.js"></script>
+<script src="../js/navbar-gesture.js"></script>
+</body>
+</html>
