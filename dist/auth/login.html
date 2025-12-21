@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login • Expense Manager</title>
+<link rel="icon" href="data:,">
  
 <style>
 /* ======================================================
@@ -242,16 +243,16 @@ body { padding-top: 84px; }
   }
 }
 </style>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
-  <script type="module" crossorigin src="/assets/firebase-ClHfoL4X.js"></script>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
-  <script type="module" crossorigin src="/assets/auth-BuabjOan.js"></script>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script>
-  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js"></script>
+  <script type="module" crossorigin src="/assets/firebase-CCPgoP9_.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js"></script>
+  <script type="module" crossorigin src="/assets/auth-B0stHlFw.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js"></script>
+  <script type="module" crossorigin src="https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js"></script>
 </head>
 
 <body>
@@ -263,6 +264,25 @@ body { padding-top: 84px; }
     <button type="submit">Login</button>
   </form>
   <p class="link-text">New user? <a href="signup.html">Signup</a></p>
+  
+  <div style="margin-top: 24px; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+    <button id="skipBtn" style="background: none; color: #64748b; font-size: 14px; font-weight: normal; box-shadow: none; border: 1px dashed #cbd5e1;" type="button">
+      Skip Login (Offline Mode) 🚀
+    </button>
+  </div>
+
+  <script>
+    // Standalone script to handle skip without relying on modules
+    document.getElementById('skipBtn').addEventListener('click', () => {
+      sessionStorage.setItem('guest_mode', 'true');
+      window.location.href = '../dashboard/home.html';
+    });
+
+    // Offline check
+    if (!navigator.onLine) {
+      alert("You are offline. Please connect to internet to login.");
+    }
+  </script>
 </div>
 
 </body>

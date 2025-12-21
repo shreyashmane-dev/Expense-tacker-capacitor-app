@@ -1,0 +1,1 @@
+import{a as t}from"./firebase-CCPgoP9_.js";import{onAuthStateChanged as a}from"https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";import"https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";import"https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";a(t,o=>{o?location.replace("/dashboard/home.html"):location.replace("/auth/login.html")});
