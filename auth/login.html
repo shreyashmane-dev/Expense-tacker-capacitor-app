@@ -267,6 +267,11 @@ body { padding-top: 84px; }
       sessionStorage.setItem('guest_mode', 'true');
       window.location.href = '../dashboard/home.html';
     });
+
+    // Offline check
+    if (!navigator.onLine) {
+      alert("You are offline. Please connect to internet to login.");
+    }
   </script>
 </div>
 

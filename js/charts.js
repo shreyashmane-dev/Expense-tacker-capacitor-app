@@ -1,5 +1,5 @@
 import { getTransactions } from "./db.js";
-import { Chart, registerables } from 'chart.js';
+import { Chart, registerables } from 'https://cdn.jsdelivr.net/npm/chart.js@4.4.1/+esm';
 
 Chart.register(...registerables);
 
