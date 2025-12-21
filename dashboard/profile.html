@@ -338,7 +338,38 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 
 // Custom profile logic (onAuthStateChanged handled by app.js guard, but we still need the data fetching)
+// Custom profile logic (onAuthStateChanged handled by app.js guard, but we still need the data fetching)
 onAuthStateChanged(auth, async (user) => {
+  
+  // 1. GUEST MODE HANDLING
+  if (!user && sessionStorage.getItem('guest_mode') === 'true') {
+    document.getElementById("displayName").textContent = "Guest User";
+    document.getElementById("displayEmail").textContent = "Offline Mode";
+    document.getElementById("profileAvatar").textContent = "G";
+    document.getElementById("profileJoined").value = new Date().toLocaleDateString();
+    
+    // Disable inputs for guest
+    document.querySelectorAll("input, select").forEach(el => {
+      if (el.id !== "profileSmsToggle") el.disabled = true;
+    });
+
+    const btn = document.getElementById("updateProfileBtn");
+    btn.textContent = "Login to Sync Data";
+    btn.style.background = "#2563eb";
+    btn.onclick = () => {
+      sessionStorage.removeItem("guest_mode");
+      window.location.href = "/auth/login.html";
+    };
+
+    // Logout handling for guest (clear session)
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      sessionStorage.removeItem("guest_mode");
+      window.location.href = "/auth/login.html";
+    });
+    return;
+  }
+
+  // 2. AUTHENTICATED USER HANDLING
   if (!user) return; // app.js handles redirect
   
   const uid = user.uid;
