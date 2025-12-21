@@ -1,6 +1,6 @@
 import { auth, db } from "../js/firebase.js";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 // ... (Signup logic remains the same, assuming it's above)
 
@@ -17,6 +17,9 @@ if(loginForm){
     const originalText = btn.textContent;
 
     try {
+      if (!navigator.onLine) {
+        throw new Error("You are offline. Internet required for login.");
+      }
       btn.textContent = "Logging in...";
       btn.disabled = true;
 

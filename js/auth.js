@@ -3,8 +3,8 @@ import {
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 
     updateProfile 
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js";
 
 export async function window_login(email, password) {
     try {

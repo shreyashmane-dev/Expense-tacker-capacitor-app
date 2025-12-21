@@ -157,3 +157,35 @@ window.addEventListener("transactionAdded", () => {
     import("./home.js").then(() => {}).catch(() => {});
   }
 });
+
+// ===============================
+// OFFLINE/ONLINE UX (Netlify Safe)
+// ===============================
+window.addEventListener("offline", () => {
+  const status = document.createElement('div');
+  status.id = "connection-status";
+  status.style = "position:fixed; bottom:80px; left:50%; transform:translateX(-50%); background:#ef4444; color:white; padding:8px 16px; border-radius:30px; font-size:12px; font-weight:bold; z-index:9999; box-shadow:0 10px 25px rgba(239,68,68,0.4); border:1px solid rgba(255,255,255,0.2); backdrop-filter:blur(10px); animation: slideUp 0.4s ease;";
+  status.innerHTML = "<span>⚠️ Offline Mode</span>";
+  document.body.appendChild(status);
+});
+
+window.addEventListener("online", () => {
+  const status = document.getElementById("connection-status");
+  if (status) {
+    status.style.background = "#10b981";
+    status.style.boxShadow = "0 10px 25px rgba(16,185,129,0.4)";
+    status.innerHTML = "<span>🌐 Back Online! Syncing...</span>";
+    setTimeout(() => status.remove(), 3000);
+  }
+});
+
+// CSS Animation for the status bar
+const style = document.createElement('style');
+style.textContent = `
+@keyframes slideUp {
+  from { transform: translate(-50%, 50px); opacity: 0; }
+  to { transform: translate(-50%, 0); opacity: 1; }
+}
+`;
+document.head.appendChild(style);
+
