@@ -1,33 +1,146 @@
-# Expense Manager
+📱 Expense Tracker – Android App (Capacitor)
 
-A comprehensive expense management application with SMS handling and AI-driven insights.
+A working Android application built by converting a web-based Expense Tracker into a native mobile app using Capacitor.
 
-## Project Structure
+This project demonstrates real web → mobile conversion, Android builds, and on-device execution — not a UI mockup.
 
-- `public/`: Static assets and entry point.
-- `auth/`: Authentication pages and logic.
-- `dashboard/`: Application pages.
-- `js/`: Core business logic and services.
-- `css/`: Styling.
+🚀 Overview
 
-## Android notification & Play Store guidance
+Instead of rewriting the app in native Android, this project reuses the existing web codebase and runs it inside an Android WebView using Capacitor.
 
-This project includes optional Android native code to listen for payment notifications (PhonePe / GPay) and forward them to the WebView. Important notes:
+This approach enables:
 
-- Permission: You must declare `android.permission.BIND_NOTIFICATION_LISTENER_SERVICE` in `android/app/src/main/AndroidManifest.xml` and register a `NotificationListenerService` (the user must enable it manually in Settings).
-- Manual enable: The `BIND_NOTIFICATION_LISTENER_SERVICE` permission cannot be auto-granted. Instruct users to enable Notification Access: Settings → Apps & notifications → Special app access → Notification access → Enable "Expense Manager".
-- Privacy: Only payment notification text is parsed on-device; no data is sent to external servers by the native listener.
+Faster development
 
-Play Store considerations
+Single codebase
 
-- Internal testing / personal APK: Allowed.
-- Public Play Store: You may need Google approval if the permission is sensitive or the app's primary purpose is not clearly related to notifications/SMS. Provide clear disclosure, in-app explanation, and a privacy policy when submitting.
+Real Android deployment
 
-Testing steps (quick)
+✨ Features
 
-1. Build an internal APK and install on your test device.
-2. Open Settings → Apps & notifications → Special app access → Notification access and enable access for the app.
-3. Send a payment notification (or use the app's SMS/Notification simulators in `dashboard/home.html`) to verify imports.
-4. Check the debug logcat for messages coming from `SmsReceiver` and `PayNotificationListener` and confirm the WebView receives `smsReceived` or `notificationReceived` events.
+Add daily expenses with amount & description
 
-If you plan to publish on Play Store, include a clear privacy policy and explain why notification access is required.
+Dynamic dashboard view
+
+Expense history tab
+
+Visual insights & charts
+
+Profile screen
+
+Persistent on-device storage
+
+Runs as a real Android APK
+
+🧩 Use Cases
+
+Personal expense tracking
+
+Student budgeting
+
+Capacitor learning projects
+
+Web-to-Android conversion demos
+
+🛠 Tech Stack
+
+HTML
+
+CSS
+
+JavaScript
+
+Capacitor
+
+Android (WebView)
+
+Android Studio
+
+🔄 Conversion Workflow
+
+Built & tested the web version
+
+Initialized Capacitor
+
+Added Android platform
+
+Synced web assets
+
+Opened project in Android Studio
+
+Built & tested APK on real device
+
+📸 Screenshots (Real Android App)
+
+All screenshots are captured from the running Android application
+and stored in the /screenshots directory.
+
+📊 Dashboard & Insights
+<p align="center"> <img src="./screenshots/Dashboard.jpeg" width="30%" /> <img src="./screenshots/charts.jpeg" width="30%" /> <img src="./screenshots/insights.jpeg" width="30%" /> </p>
+📑 Expense History & Login
+<p align="center"> <img src="./screenshots/history-tab.jpeg" width="30%" /> <img src="./screenshots/login-page.jpeg" width="30%" /> </p>
+👤 Profile
+<p align="center"> <img src="./screenshots/profile.jpeg" width="30%" /> </p>
+
+
+
+📦 APK Status
+
+APK generated successfully
+
+Installed & tested on physical Android device
+
+Runs via Capacitor WebView
+
+🔗 Related Project
+
+🌐 Web version: Expense Tracker (Web)
+(link this repo when available)
+
+🧠 What This Project Demonstrates
+
+Capacitor web → Android conversion
+
+Android project structure familiarity
+
+APK build & testing process
+
+Persistent local storage
+
+Documentation with real proof
+
+🔮 Future Improvements
+
+Firebase authentication
+
+Cloud expense sync
+
+Expense categories
+
+Push notifications
+
+UI/UX enhancements
+
+⭐ Support
+
+If you find this project useful:
+
+⭐ Star the repository
+
+🍴 Fork it
+
+💬 Share feedback
+
+📄 License
+
+MIT License
+
+👤 Author
+
+Shreyash Mane
+CSE First-Year Student
+Web & App Developer
+
+GitHub: https://github.com/shreyashmane-dev
+
+LinkedIn: https://www.linkedin.com/in/shreyash-mane-7675a4385
