@@ -139,7 +139,7 @@ MIT License
 
 Shreyash Mane
 CSE First-Year Student
-Web & App Developer
+
 
 GitHub: https://github.com/shreyashmane-dev
 
